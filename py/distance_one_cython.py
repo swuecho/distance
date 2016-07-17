@@ -10,12 +10,8 @@ lines = []
 with open(pickle_filepath, 'rb') as pickle_handle:
     lines = pickle.load(pickle_handle)
 
-def select_item(item, csf_cdr3 ):
-    pb_cdr3 = item.split(b',')[3]
-    return distance.hamming_distance( csf_cdr3, pb_cdr3, 5)
-
 def process_file(csf_cdr3):
-    selected = [ i for i in lines if select_item(i,csf_cdr3) == 1]
+    selected = distance.select_all_related(csf_cdr3,lines) 
     # write into a files nameed by csf_cdr3
     with open('./result/' + csf_cdr3.decode('ascii') + '.csv', 'wb') as f:
         for s in selected:
