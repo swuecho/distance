@@ -1,4 +1,4 @@
-def hamming_distance(str a,  str b, int limit ):
+def hamming_distance(char* a,  char* b, int limit ):
     cdef short len_a
     cdef short mismatch
     len_a = len(a)

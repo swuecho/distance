@@ -581,31 +581,8 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
     PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
     const char* function_name);
 
-/* ArgTypeTest.proto */
-static CYTHON_INLINE int __Pyx_ArgTypeTest(PyObject *obj, PyTypeObject *type, int none_allowed,
-    const char *name, int exact);
-
-/* GetItemInt.proto */
-#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
-    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
-               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
-#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
-                                                     int is_list, int wraparound, int boundscheck);
+/* IncludeStringH.proto */
+#include <string.h>
 
 /* CodeObjectCache.proto */
 typedef struct {
@@ -665,12 +642,12 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_distance[] = "distance";
 static const char __pyx_k_mismatch[] = "mismatch";
 static const char __pyx_k_hamming_distance[] = "hamming_distance";
-static const char __pyx_k_home_hwu_dev_distance_hm_distan[] = "/home/hwu/dev/distance/hm/distance.pyx";
+static const char __pyx_k_home_hwu_dev_distance_py_distan[] = "/home/hwu/dev/distance/py/distance.pyx";
 static PyObject *__pyx_n_s_a;
 static PyObject *__pyx_n_s_b;
 static PyObject *__pyx_n_s_distance;
 static PyObject *__pyx_n_s_hamming_distance;
-static PyObject *__pyx_kp_s_home_hwu_dev_distance_hm_distan;
+static PyObject *__pyx_kp_s_home_hwu_dev_distance_py_distan;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_len_a;
 static PyObject *__pyx_n_s_limit;
@@ -678,14 +655,14 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mismatch;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, int __pyx_v_limit); /* proto */
+static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_a, char *__pyx_v_b, int __pyx_v_limit); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_codeobj__2;
 
 /* "distance.pyx":1
- * def hamming_distance(str a,  str b, int limit ):             # <<<<<<<<<<<<<<
+ * def hamming_distance(char* a,  char* b, int limit ):             # <<<<<<<<<<<<<<
  *     cdef short len_a
  *     cdef short mismatch
  */
@@ -694,8 +671,8 @@ static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_pw_8distance_1hamming_distance(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyMethodDef __pyx_mdef_8distance_1hamming_distance = {"hamming_distance", (PyCFunction)__pyx_pw_8distance_1hamming_distance, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_8distance_1hamming_distance(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_a = 0;
-  PyObject *__pyx_v_b = 0;
+  char *__pyx_v_a;
+  char *__pyx_v_b;
   int __pyx_v_limit;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -739,8 +716,8 @@ static PyObject *__pyx_pw_8distance_1hamming_distance(PyObject *__pyx_self, PyOb
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_a = ((PyObject*)values[0]);
-    __pyx_v_b = ((PyObject*)values[1]);
+    __pyx_v_a = __Pyx_PyObject_AsString(values[0]); if (unlikely((!__pyx_v_a) && PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L3_error)
+    __pyx_v_b = __Pyx_PyObject_AsString(values[1]); if (unlikely((!__pyx_v_b) && PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L3_error)
     __pyx_v_limit = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_limit == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
@@ -751,32 +728,23 @@ static PyObject *__pyx_pw_8distance_1hamming_distance(PyObject *__pyx_self, PyOb
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_a), (&PyString_Type), 1, "a", 1))) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_b), (&PyString_Type), 1, "b", 1))) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_r = __pyx_pf_8distance_hamming_distance(__pyx_self, __pyx_v_a, __pyx_v_b, __pyx_v_limit);
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, int __pyx_v_limit) {
+static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_a, char *__pyx_v_b, int __pyx_v_limit) {
   short __pyx_v_len_a;
   short __pyx_v_mismatch;
   short __pyx_v_i;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  Py_ssize_t __pyx_t_1;
+  size_t __pyx_t_1;
   int __pyx_t_2;
   short __pyx_t_3;
   short __pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("hamming_distance", 0);
 
   /* "distance.pyx":4
@@ -786,7 +754,7 @@ static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__p
  *     if  len_a != len(b):
  *         return 0
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_a); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = strlen(__pyx_v_a); 
   __pyx_v_len_a = __pyx_t_1;
 
   /* "distance.pyx":5
@@ -796,7 +764,7 @@ static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__p
  *         return 0
  *     mismatch = 0
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_b); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = strlen(__pyx_v_b); 
   __pyx_t_2 = ((__pyx_v_len_a != __pyx_t_1) != 0);
   if (__pyx_t_2) {
 
@@ -848,15 +816,7 @@ static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__p
  *             mismatch+=1
  *         if mismatch > limit:
  */
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_a, __pyx_v_i, short, 1, __Pyx_PyInt_From_short, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 10, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_b, __pyx_v_i, short, 1, __Pyx_PyInt_From_short, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 10, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_t_6, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 10, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_2 = (((__pyx_v_a[__pyx_v_i]) != (__pyx_v_b[__pyx_v_i])) != 0);
     if (__pyx_t_2) {
 
       /* "distance.pyx":11
@@ -921,18 +881,12 @@ static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__p
   goto __pyx_L0;
 
   /* "distance.pyx":1
- * def hamming_distance(str a,  str b, int limit ):             # <<<<<<<<<<<<<<
+ * def hamming_distance(char* a,  char* b, int limit ):             # <<<<<<<<<<<<<<
  *     cdef short len_a
  *     cdef short mismatch
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("distance.hamming_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -966,7 +920,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_b, __pyx_k_b, sizeof(__pyx_k_b), 0, 0, 1, 1},
   {&__pyx_n_s_distance, __pyx_k_distance, sizeof(__pyx_k_distance), 0, 0, 1, 1},
   {&__pyx_n_s_hamming_distance, __pyx_k_hamming_distance, sizeof(__pyx_k_hamming_distance), 0, 0, 1, 1},
-  {&__pyx_kp_s_home_hwu_dev_distance_hm_distan, __pyx_k_home_hwu_dev_distance_hm_distan, sizeof(__pyx_k_home_hwu_dev_distance_hm_distan), 0, 0, 1, 0},
+  {&__pyx_kp_s_home_hwu_dev_distance_py_distan, __pyx_k_home_hwu_dev_distance_py_distan, sizeof(__pyx_k_home_hwu_dev_distance_py_distan), 0, 0, 1, 0},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_len_a, __pyx_k_len_a, sizeof(__pyx_k_len_a), 0, 0, 1, 1},
   {&__pyx_n_s_limit, __pyx_k_limit, sizeof(__pyx_k_limit), 0, 0, 1, 1},
@@ -988,14 +942,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
   /* "distance.pyx":1
- * def hamming_distance(str a,  str b, int limit ):             # <<<<<<<<<<<<<<
+ * def hamming_distance(char* a,  char* b, int limit ):             # <<<<<<<<<<<<<<
  *     cdef short len_a
  *     cdef short mismatch
  */
   __pyx_tuple_ = PyTuple_Pack(6, __pyx_n_s_a, __pyx_n_s_b, __pyx_n_s_limit, __pyx_n_s_len_a, __pyx_n_s_mismatch, __pyx_n_s_i); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_hwu_dev_distance_hm_distan, __pyx_n_s_hamming_distance, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(3, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_hwu_dev_distance_py_distan, __pyx_n_s_hamming_distance, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1105,7 +1059,7 @@ PyMODINIT_FUNC PyInit_distance(void)
   #endif
 
   /* "distance.pyx":1
- * def hamming_distance(str a,  str b, int limit ):             # <<<<<<<<<<<<<<
+ * def hamming_distance(char* a,  char* b, int limit ):             # <<<<<<<<<<<<<<
  *     cdef short len_a
  *     cdef short mismatch
  */
@@ -1312,114 +1266,6 @@ invalid_keyword:
     #endif
 bad:
     return -1;
-}
-
-/* ArgTypeTest */
-static void __Pyx_RaiseArgumentTypeInvalid(const char* name, PyObject *obj, PyTypeObject *type) {
-    PyErr_Format(PyExc_TypeError,
-        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
-        name, type->tp_name, Py_TYPE(obj)->tp_name);
-}
-static CYTHON_INLINE int __Pyx_ArgTypeTest(PyObject *obj, PyTypeObject *type, int none_allowed,
-    const char *name, int exact)
-{
-    if (unlikely(!type)) {
-        PyErr_SetString(PyExc_SystemError, "Missing type object");
-        return 0;
-    }
-    if (none_allowed && obj == Py_None) return 1;
-    else if (exact) {
-        if (likely(Py_TYPE(obj) == type)) return 1;
-        #if PY_MAJOR_VERSION == 2
-        else if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
-        #endif
-    }
-    else {
-        if (likely(PyObject_TypeCheck(obj, type))) return 1;
-    }
-    __Pyx_RaiseArgumentTypeInvalid(name, obj, type);
-    return 0;
-}
-
-/* GetItemInt */
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
-    PyObject *r;
-    if (!j) return NULL;
-    r = PyObject_GetItem(o, j);
-    Py_DECREF(j);
-    return r;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_COMPILING_IN_CPYTHON
-    if (wraparound & unlikely(i < 0)) i += PyList_GET_SIZE(o);
-    if ((!boundscheck) || likely((0 <= i) & (i < PyList_GET_SIZE(o)))) {
-        PyObject *r = PyList_GET_ITEM(o, i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_COMPILING_IN_CPYTHON
-    if (wraparound & unlikely(i < 0)) i += PyTuple_GET_SIZE(o);
-    if ((!boundscheck) || likely((0 <= i) & (i < PyTuple_GET_SIZE(o)))) {
-        PyObject *r = PyTuple_GET_ITEM(o, i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
-                                                     CYTHON_NCP_UNUSED int wraparound,
-                                                     CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_COMPILING_IN_CPYTHON
-    if (is_list || PyList_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
-        if ((!boundscheck) || (likely((n >= 0) & (n < PyList_GET_SIZE(o))))) {
-            PyObject *r = PyList_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    }
-    else if (PyTuple_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
-        if ((!boundscheck) || likely((n >= 0) & (n < PyTuple_GET_SIZE(o)))) {
-            PyObject *r = PyTuple_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    } else {
-        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
-        if (likely(m && m->sq_item)) {
-            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
-                Py_ssize_t l = m->sq_length(o);
-                if (likely(l >= 0)) {
-                    i += l;
-                } else {
-                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                        return NULL;
-                    PyErr_Clear();
-                }
-            }
-            return m->sq_item(o, i);
-        }
-    }
-#else
-    if (is_list || PySequence_Check(o)) {
-        return PySequence_GetItem(o, i);
-    }
-#endif
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
 }
 
 /* CodeObjectCache */
