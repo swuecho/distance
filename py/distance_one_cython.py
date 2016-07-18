@@ -6,7 +6,7 @@ import pickle
 
 #python bytes is equal to char* in C
 pickle_filepath = './pb_cdr3.data'
-lines = []
+
 with open(pickle_filepath, 'rb') as pickle_handle:
     lines = pickle.load(pickle_handle)
 
@@ -20,8 +20,6 @@ def process_file(csf_cdr3):
     with open(output_name,'wb') as f:
         for s in selected:
             f.write(s)
-
-csf_cdr3_lines = []
 with open('csf_cdr3.csv', 'rb') as f:
     csf_cdr3_lines = f.readlines()
 

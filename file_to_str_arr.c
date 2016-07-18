@@ -30,6 +30,16 @@ int read_file_to_arr(char* filename, char** file_lines) {
     
 }
 
+int hamming_distance_ok(char* a, char *b, int limit) {
+    int len_a;
+    int len_b;
+    len_a  = strlen(a)
+    len_b  = strlen(b)
+
+
+
+}
+
 int main() {
     int total;
     char* filename = "./pb_cdr3_head.csv";
