@@ -34,11 +34,16 @@ int main() {
     int total;
     char* filename = "./pb_cdr3_head.csv";
 
+    // !!! because TOT is too large, 
+    // char file_lines[TOT][BUF] is not going to work,
+    // because there is limit on how many bytes can be allocated on stack
+    // i.e. stack size limit
     char **file_lines;
     file_lines = malloc(TOT* sizeof(char*));
     int i = 0;
     for (i = 0; i < TOT; i++)
             file_lines[i] = malloc((BUF+1) * sizeof(char));
+
     total = read_file_to_arr(filename, file_lines);
     for(i = 0; i < total; i++)
         printf("%s", file_lines[i]);
