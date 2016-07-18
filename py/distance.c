@@ -723,7 +723,7 @@ static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_a, char *__pyx_v_b, short __pyx_v_limit); /* proto */
 static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_item, char *__pyx_v_csf_cdr3); /* proto */
 static PyObject *__pyx_pf_8distance_4select_all_related(CYTHON_UNUSED PyObject *__pyx_self, char *__pyx_v_csf_cdr3, PyObject *__pyx_v_lines); /* proto */
-static PyObject *__pyx_int_5;
+static PyObject *__pyx_int_2;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__5;
@@ -951,7 +951,7 @@ static PyObject *__pyx_pf_8distance_hamming_distance(CYTHON_UNUSED PyObject *__p
  * 
  * def select_item(char* item, char* csf_cdr3 ):             # <<<<<<<<<<<<<<
  *     pb_cdr3 = item.split(b',')[3]
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  */
 
 /* Python wrapper */
@@ -1029,7 +1029,7 @@ static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_s
  * 
  * def select_item(char* item, char* csf_cdr3 ):
  *     pb_cdr3 = item.split(b',')[3]             # <<<<<<<<<<<<<<
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  */
   __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_item); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
@@ -1049,7 +1049,7 @@ static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_s
   /* "distance.pyx":16
  * def select_item(char* item, char* csf_cdr3 ):
  *     pb_cdr3 = item.split(b',')[3]
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)             # <<<<<<<<<<<<<<
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)             # <<<<<<<<<<<<<<
  * 
  * def select_all_related(char* csf_cdr3, lines):
  */
@@ -1080,9 +1080,9 @@ static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_INCREF(__pyx_v_pb_cdr3);
   __Pyx_GIVEREF(__pyx_v_pb_cdr3);
   PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_pb_cdr3);
-  __Pyx_INCREF(__pyx_int_5);
-  __Pyx_GIVEREF(__pyx_int_5);
-  PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_int_5);
+  __Pyx_INCREF(__pyx_int_2);
+  __Pyx_GIVEREF(__pyx_int_2);
+  PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_int_2);
   __pyx_t_3 = 0;
   __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -1097,7 +1097,7 @@ static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_s
  * 
  * def select_item(char* item, char* csf_cdr3 ):             # <<<<<<<<<<<<<<
  *     pb_cdr3 = item.split(b',')[3]
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  */
 
   /* function exit code */
@@ -1117,7 +1117,7 @@ static PyObject *__pyx_pf_8distance_2select_item(CYTHON_UNUSED PyObject *__pyx_s
 }
 
 /* "distance.pyx":18
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  * def select_all_related(char* csf_cdr3, lines):             # <<<<<<<<<<<<<<
  *     return([ i for i in lines if select_item(i,csf_cdr3)])
@@ -1291,7 +1291,7 @@ static PyObject *__pyx_pf_8distance_4select_all_related(CYTHON_UNUSED PyObject *
   goto __pyx_L0;
 
   /* "distance.pyx":18
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  * def select_all_related(char* csf_cdr3, lines):             # <<<<<<<<<<<<<<
  *     return([ i for i in lines if select_item(i,csf_cdr3)])
@@ -1375,7 +1375,7 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * def select_item(char* item, char* csf_cdr3 ):
  *     pb_cdr3 = item.split(b',')[3]             # <<<<<<<<<<<<<<
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  */
   __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_b_); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 15, __pyx_L1_error)
@@ -1397,7 +1397,7 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  * def select_item(char* item, char* csf_cdr3 ):             # <<<<<<<<<<<<<<
  *     pb_cdr3 = item.split(b',')[3]
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  */
   __pyx_tuple__5 = PyTuple_Pack(3, __pyx_n_s_item, __pyx_n_s_csf_cdr3, __pyx_n_s_pb_cdr3); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
@@ -1405,7 +1405,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_hwu_dev_distance_py_distan, __pyx_n_s_select_item, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 14, __pyx_L1_error)
 
   /* "distance.pyx":18
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  * def select_all_related(char* csf_cdr3, lines):             # <<<<<<<<<<<<<<
  *     return([ i for i in lines if select_item(i,csf_cdr3)])
@@ -1423,7 +1423,7 @@ static int __Pyx_InitCachedConstants(void) {
 
 static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  __pyx_int_5 = PyInt_FromLong(5); if (unlikely(!__pyx_int_5)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1536,7 +1536,7 @@ PyMODINIT_FUNC PyInit_distance(void)
  * 
  * def select_item(char* item, char* csf_cdr3 ):             # <<<<<<<<<<<<<<
  *     pb_cdr3 = item.split(b',')[3]
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8distance_3select_item, NULL, __pyx_n_s_distance); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1544,7 +1544,7 @@ PyMODINIT_FUNC PyInit_distance(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "distance.pyx":18
- *     return hamming_distance( csf_cdr3, pb_cdr3, 5)
+ *     return hamming_distance( csf_cdr3, pb_cdr3, 2)
  * 
  * def select_all_related(char* csf_cdr3, lines):             # <<<<<<<<<<<<<<
  *     return([ i for i in lines if select_item(i,csf_cdr3)])

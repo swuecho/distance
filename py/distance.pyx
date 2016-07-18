@@ -13,7 +13,7 @@ def hamming_distance(char* a,  char* b, short limit ):
 
 def select_item(char* item, char* csf_cdr3 ):
     pb_cdr3 = item.split(b',')[3]
-    return hamming_distance( csf_cdr3, pb_cdr3, 5)
+    return hamming_distance( csf_cdr3, pb_cdr3, 2)
 
 def select_all_related(char* csf_cdr3, lines):
     return([ i for i in lines if select_item(i,csf_cdr3)])
