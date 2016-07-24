@@ -1,8 +1,6 @@
 use v5.18;
 use MCE::Grep;
 
-
-
 sub hamming_distance {
     my ($a, $b, $limit) = @_;
     my $len = length $a;
@@ -23,30 +21,30 @@ sub select_item {
     my ($item, $csf_cdr3) = @_;
     my @F = split ',';
     my $pb_cdr3 = $F[3];
-    return hamming_distance($csf_cdr3, $pb_cdr3, 2)
+    return hamming_distance($csf_cdr3, $pb_cdr3, 3)
 }
 
 sub process_file {
     my $csf_cdr3 = shift;
+    my $pb_cdr3_all = shift;
 
-my $filename = 'denge/' . $csf_cdr3 . '.csv';
+my $filename = 'result/' . $csf_cdr3 . '.csv';
+
+my @selected = mce_grep { select_item($_, $csf_cdr3) } @$pb_cdr3_all;
 
 open(my $FH, '>', $filename)
   or die "Could not open file '$filename' $!";
-
-open(my $PB_FH, '<', 'pb_cdr3.csv') or die;
-
-my @selected = mce_grep { select_item($_, $csf_cdr3) } $PB_FH;
-
 print $FH $_ for @selected;
 
 }
 
-my $csf_cdr3 = 'CARLDYYYYYGMDL';
-process_file($csf_cdr3);
-$csf_cdr3 = 'CARLDYYYYYGMD';
-process_file($csf_cdr3);
-$csf_cdr3 = 'CARLDYYYYYGM';
-process_file($csf_cdr3);
-$csf_cdr3 = 'CARLDYYYYYG';
-process_file($csf_cdr3);
+open(my $PB_FH, '<', 'pb_cdr3.csv') or die;
+my @pb_cdr3_all = <$PB_FH>;
+#main
+open(my $CSF_FH, '<', 'csf_cdr3.csv') or die;
+while(<$CSF_FH>) {
+    my @F = split ',';
+    my $csf_cdr3 = $F[3];
+    say $.;
+    process_file($csf_cdr3, \@pb_cdr3_all);
+}
